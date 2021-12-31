@@ -48,4 +48,5 @@ public class StudentHandler {
     public void delete(@PathVariable("id") int id){
         studentMapper.delete(id);
     }
+
 }

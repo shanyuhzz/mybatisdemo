@@ -1,5 +1,5 @@
 
-# ���ݿ���ص���Ϣ���� TODO
+
 spring:
     datasource:
         url: jdbc:mysql://118.25.243.141:3306/test?characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
@@ -21,5 +21,13 @@ spring:
               min-idle: 0
 
 mybatis:
-    mapper-locations: classpath:mapping/*.xml  #ע�⣺һ��Ҫ��Ӧmapperӳ��xml�ļ�������·��
+    mapper-locations: classpath:mapping/*.xml
     type-aliases-package: com.example.mybatisdemo.entity
+
+ok:
+    http:
+        connect-timeout: 30
+        keep-alive-duration: 300
+        max-idle-connections: 200
+        read-timeout: 30
+        write-timeout: 30
