@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.mybatisdemo.model.CaiPiaoModel;
 import com.example.mybatisdemo.util.OkHttpUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,9 @@ public class CrawlDataService {
     @Autowired
     private OkHttpUtils okHttpUtils;
 
+    private static final Logger logger = LoggerFactory.getLogger(CrawlDataService.class);
+    private static final Logger logger2 = LoggerFactory.getLogger("com.test.crawl");
+
     public List<CaiPiaoModel> crawlData(){
         final List<CaiPiaoModel> models = new ArrayList<>();
 
@@ -27,6 +32,9 @@ public class CrawlDataService {
         String errorCode = jsonObject.getString("errorCode");
         boolean success = jsonObject.getBoolean("success");
         boolean emptyFlag = jsonObject.getBoolean("emptyFlag");
+
+        logger.info("get data success. errorCode:[{}], emptyFlag:[{}].", errorCode, emptyFlag);
+        logger2.info("get data success. errorCode:[{}], emptyFlag:[{}].", errorCode, emptyFlag);
 
         if(success && !emptyFlag) {
             String value = jsonObject.getString("value");
